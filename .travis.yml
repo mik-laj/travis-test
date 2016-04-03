@@ -1,0 +1,27 @@
+language: ruby
+rvm:
+- 2.1
+
+branches:
+  only:
+  - production
+
+install:
+  - bundle install
+
+before_script:
+  - chmod +x ./script/buildci.sh
+
+script: 
+  - ./script/buildci.sh
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - TRAVIS_REPO_SLUG=mik-laj/travis-test
+  - TRAVIS_REPO_BRANCH=gh-pages
+  - TRAVIS_REPO_COPY_SLUG=mik-laj/travis-test-copy
+  - TRAVIS_REPO_COPY_DIR=samples
+  - secure: "MKA66rPcDw6WdIKqmEK/jRMxeZUyzsucB7fKJpO7Uyi11v6mS73fhE3VzdDacXMgWpyMkBGI44v1iJngvGiShmGsjxLFnzi2f2H8WJojT7c/8j4SbeCGiyE/+YdJqEJFNOfZRVOVgnhfrY8wcskUeOOJBT6lzjrp7uL2lUZ3xqBkf1MLTs+IXM6yIeq2zjRWltu3omgqwg/RFccwHLBSZvTLtO40oYFlxfsb2duZ0pL7efW3nzinuUtumYp10Kd+B/hwxQFlgpHBhMOfaUUG7PH1C6LmoF5E5x1uUtul01a8DyIVQTRXaabzjjmbqTbO4AgOVgn7l03lTpEWNqSXVJaeS1nuIG764SJi6w9u/QBo1TOiJazPJ+Br/AraZ6jSf4i40msl1tk0X1aACKx9hNa0DbDOtAHoox5lRYCDdc8KXhQlKZ7iV2YWh/E7TISQt/R5lc3Ay4tMpXO/e+lZ+4apVDq3nu7u8UKQi61cULEQaDYgujonsVgi9tTAb15RQPraJ69pOMvO6Y8A2ON1Dm1xCo1s/Tc7CtiUVKN0+VjTnHzchXUJipF2sPmMnvR95iZxgE3l+6HLhN8vAGfV4nIyBXuin9rSTeJJQIkV+N5vk8junpEkFvoV79dN2q0tagw7XRLPIQ4Kk8+jQ+EJDUlDAcz4SPR1XzXsNemVpUM="
+
+sudo: false # route your build to the container-based infrastructure for a faster build
